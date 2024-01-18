@@ -8,7 +8,7 @@ function Species () {
     const username = location.state?.username;
 
     useEffect(() => {
-        fetch(`/explorer/animals`, {
+        fetch(`${BASE_URL}/explorer/animals`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

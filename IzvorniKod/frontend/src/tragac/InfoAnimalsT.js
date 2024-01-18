@@ -1,5 +1,6 @@
 import React, { useState }  from 'react';
 import { useLocation } from 'react-router-dom';
+import { BASE_URL } from '../config';
 
 function InfoAnimals() {
     const location = useLocation();
@@ -13,14 +14,14 @@ function InfoAnimals() {
 
     console.log(comments);
     if (animal.animalName === "Sivi sokol") {
-        src = '/animalImages/sivisokol.jpg';
-    } else if (animal.animalName === "Smedi medvjed") {
-        src = '/animalImages/smedimedvjed.jpg';
-    } else if (animal.animalName === "Kuna bjelica") {
-        src = '/animalImages/kunabjelica.jpg';
-    } else {
-        src = '/animalImages/sivivuk.jpg';
-    }
+      src = `${BASE_URL}/animalImages/sivisokol.jpg`;
+  } else if (animal.animalName === "Smedi medvjed") {
+      src = `${BASE_URL}/animalImages/smedimedvjed.jpg`;
+  } else if (animal.animalName === "Kuna bjelica") {
+      src = `${BASE_URL}/animalImages/kunabjelica.jpg`;
+  } else {
+      src = `${BASE_URL}/animalImages/sivivuk.jpg`;
+  }
 
     const imageStyle = {
         width: '400px',
@@ -74,7 +75,7 @@ function InfoAnimals() {
             setComment('');
           }
         
-        fetch(`/tracker/animals/species/${id}/comment`, {
+        fetch(`${BASE_URL}/tracker/animals/species/${id}/comment`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -1,5 +1,6 @@
 import React, { useEffect, useState }  from 'react';
 import { useLocation } from 'react-router-dom';
+import { BASE_URL } from '../config';
 
 function InfoAnimals() {
     const location = useLocation();
@@ -12,7 +13,7 @@ function InfoAnimals() {
     var src = null;
 
     useEffect(() => {
-      fetch(`/explorer/animals/species/${id}/comments`, {
+      fetch(`${BASE_URL}/explorer/animals/species/${id}/comments`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -26,13 +27,13 @@ function InfoAnimals() {
     }, []);
 
     if (animal.animalName === "Sivi sokol") {
-        src = '/animalImages/sivisokol.jpg';
+        src = `${BASE_URL}/animalImages/sivisokol.jpg`;
     } else if (animal.animalName === "Smedi medvjed") {
-        src = '/animalImages/smedimedvjed.jpg';
+        src = `${BASE_URL}/animalImages/smedimedvjed.jpg`;
     } else if (animal.animalName === "Kuna bjelica") {
-        src = '/animalImages/kunabjelica.jpg';
+        src = `${BASE_URL}/animalImages/kunabjelica.jpg`;
     } else {
-        src = '/animalImages/sivivuk.jpg';
+        src = `${BASE_URL}/animalImages/sivivuk.jpg`;
     }
 
     const imageStyle = {
@@ -87,7 +88,7 @@ function InfoAnimals() {
             setComment('');
           }
         
-        fetch(`/explorer/animals/species/${id}/comment`, {
+        fetch(`${BASE_URL}/explorer/animals/species/${id}/comment`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -103,7 +104,7 @@ function InfoAnimals() {
         console.log(comment);
         console.log(id);
     
-        fetch(`/explorer/animals/species/${id}/comment/delete`, {
+        fetch(`${BASE_URL}/explorer/animals/species/${id}/comment/delete`, {
            method: 'DELETE',
            headers: {
              'Content-Type': 'application/json',
