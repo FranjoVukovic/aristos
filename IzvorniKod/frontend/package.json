@@ -1,7 +1,7 @@
 {
   "name": "franjo",
   "version": "0.1.0",
-  "proxy": "http://localhost:8080",
+  "proxy": "https://tryout-dg6o-8080.onrender.com",
   "private": true,
   "dependencies": {
     "@mapbox/polyline": "^1.2.1",
