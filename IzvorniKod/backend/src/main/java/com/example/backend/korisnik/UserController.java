@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-@CrossOrigin(origins = "https://tryout-dg6o.onrender.com")
 @RestController
 @RequestMapping
 public class UserController {
