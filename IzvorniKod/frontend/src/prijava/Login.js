@@ -46,7 +46,7 @@ function Login() {
           const result = await response.text(); // Assuming the backend returns a simple string response
           console.log(result);
           if (result === "true") {
-            const response = await fetch('/role', {
+            const response = await fetch('https://tryout-dg6o-8080.onrender.com/role', {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
