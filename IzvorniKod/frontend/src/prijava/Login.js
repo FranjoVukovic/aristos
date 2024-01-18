@@ -37,7 +37,7 @@ function Login() {
           formDataToSend.append(key, formData[key]);
         }
   
-        const response = await fetch('/login', {
+        const response = await fetch('https://tryout-dg6o-8080.onrender.com/login', {
           method: 'POST',
           body: formDataToSend,
         });
