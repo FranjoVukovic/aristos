@@ -11,6 +11,7 @@ function Explorer() {
     try {
       let response;
       if (path === 'explorer/actions') {
+        console.log(BASE_URL)
         response = await fetch(`${BASE_URL}/explorer/actions` , {
           method: 'GET',
           headers: {
