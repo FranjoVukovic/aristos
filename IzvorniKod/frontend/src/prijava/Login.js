@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import { BASE_URL } from '../config'; 
 
 function Login() {
   const navigate = useNavigate();
@@ -37,16 +38,16 @@ function Login() {
           formDataToSend.append(key, formData[key]);
         }
   
-        const response = await fetch('https://tryout-dg6o-8080.onrender.com/login', {
+        const response = await fetch(`${BASE_URL}/login`, {
           method: 'POST',
           body: formDataToSend,
         });
         
         if (response.ok) {
-          const result = await response.text(); // Assuming the backend returns a simple string response
+          const result = await response.text();
           console.log(result);
           if (result === "true") {
-            const response = await fetch('https://tryout-dg6o-8080.onrender.com/role', {
+            const response = await fetch(`${BASE_URL}/role`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
