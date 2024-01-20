@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-@CrossOrigin(origins = "https://https://tryout-dg6o.onrender.com:443")
 @RestController
 @RequestMapping
 public class UserController {
@@ -58,22 +57,25 @@ public class UserController {
         Users user = new Users(username, email, password, name, surname);
 
         System.out.println("Trying to add user");
-        try {
-            Path uploadPath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static");
-            System.out.println("1");
-            Path filePath = uploadPath.resolve(username);
-            System.out.println("2");
-            System.out.println(image);
-            System.out.println(filePath);
-            Files.copy(image.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("3");
-            String photo = "/images/" + username;
-            System.out.println("4");
-            user.setPhoto(photo);
-            System.out.println("5");
-        } catch (Exception e) {
-            throw new IllegalStateException("no photo uploaded!");
-        }
+try {
+    ServletContext context = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest().getServletContext();
+    String uploadPath = context.getRealPath("/static");
+    Files.createDirectories(Paths.get(uploadPath));
+    System.out.println("1");
+    Path filePath = Paths.get(uploadPath, username);
+    System.out.println("2");
+    System.out.println(image);
+    System.out.println(filePath);
+    Files.copy(image.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+    System.out.println("3");
+    String photo = "/images/" + username;
+    System.out.println("4");
+    user.setPhoto(photo);
+    System.out.println("5");
+} catch (Exception e) {
+    throw new IllegalStateException("Failed to upload photo!", e);
+}
+
 
         Roles role = rolesService.getByName(roleName);
         user.setRole(role);
