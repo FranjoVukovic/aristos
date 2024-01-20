@@ -1,5 +1,5 @@
 # Container za izgradnju (build) aplikacije
-FROM openjdk:21-alpine AS builder
+FROM openjdk:21-oracle AS builder
 
 # Kopiranje izvornog koda u container
 COPY ../../.mvn .mvn
@@ -12,7 +12,7 @@ RUN chmod +x mvnw
 RUN ./mvnw clean package
 
 # Stvaranje containera u kojem ce se vrtiti aplikacija
-FROM openjdk:21-alpine
+FROM openjdk:21-oracle
 
 ## Ovdje je moguce instalirati alate potrebne za rad aplikacije. Vjerojatno vam nece trebati, no dobro je znati.
 ## Linux distro koji se koristi je Alpine, stoga se kao package manager koristi apk
