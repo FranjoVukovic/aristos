@@ -12,7 +12,7 @@ function Requests() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('/admin/toConfirm');
+        const response = await fetch(`${BASE_URL}/admin/toConfirm`);
         if (response.ok) {
           const data = await response.json();
           console.log(data);
